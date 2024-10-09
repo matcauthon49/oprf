@@ -1,0 +1,176 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1in, includeheadfoot]{geometry}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{makeidx}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{cleveref} % allow for \cref command
+
+\usepackage[most]{tcolorbox}
+
+
+\usetikzlibrary{positioning}
+
+\usepackage{thmtools}
+%\usepackage[skip=6pt]{parskip}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{\textbf{OPRF Lower Bound}}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+
+\setlength\parindent{0pt}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=red,
+	filecolor=red,  
+	citecolor=red,    
+	urlcolor=blue,
+	pdftitle={Games on Graphs \#1},
+	pdfpagemode=FullScreen,
+}
+
+% \usepackage[framemethod=tikz]{mdframed}
+
+\declaretheorem[name=Theorem, numberwithin=section]{theorem}
+\declaretheorem[name=Lemma, numberwithin=section]{lemma}
+\declaretheorem[name=Inequality, numberwithin=section]{inequality}
+\declaretheorem[name=Definition, numberwithin=section]{definition}
+
+\usepackage[english]{babel}
+\title{\textbf{OPRF Lower Bound}}
+\author{Jake Januzelli, Naman Kumar, Mike Rosulek}
+
+%------- General Macros
+
+\newcommand{\np}{\mathbf{NP}}
+\newcommand{\p}{\mathbf{P}}
+\newcommand{\ip}{\mathbf{IP}}
+\newcommand{\pspace}{\mathbf{PSPACE}}
+\newcommand{\am}{\mathbf{AM}}
+\newcommand{\ma}{\mathbf{MA}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\rel}{\mathcal{R}}
+\newcommand{\lang}{\mathcal{L}}
+\newcommand{\query}{\mathcal{Q}}
+\newcommand{\prover}{\mathcal{P}}
+\newcommand{\verifier}{\mathcal{V}}
+\newcommand{\decision}{\mathcal{D}}
+\newcommand{\simulator}{\mathcal{S}}
+\newcommand{\sat}{\mathsf{SAT}}
+\newcommand{\nc}{\mathbf{NC}}
+\newcommand{\hvzk}{\mathbf{HVZK}}
+\newcommand{\zk}{\mathbf{ZK}}
+\newcommand{\pzk}{\mathbf{PZK}}
+\newcommand{\czk}{\mathbf{CZK}}
+\newcommand{\szk}{\mathbf{SZK}}
+\newcommand{\pc}{\mathsf{pc}}
+\newcommand{\vc}{\mathsf{vc}}
+\newcommand{\vr}{\mathsf{vr}}
+\newcommand{\poly}{\mathsf{poly}}
+\newcommand{\add}{\mathsf{add}}
+\newcommand{\mul}{\mathsf{mul}}
+\newcommand{\view}{\mathsf{View}}
+\newcommand{\trace}{\textsc{Trace}}
+\newcommand{\bpp}{\mathbf{BPP}}
+\newcommand{\hilbert}{\mathcal{H}}
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\langle#1|#2\rangle}
+\newcommand{\puncture}{\mathsf{Puncture}}
+
+%---------- Macros
+
+\newcommand{\env}{\mathcal{Z}}
+\newcommand{\adv}{\mathcal{A}}
+\newcommand{\red}{\mathcal{R}}
+\newcommand{\pake}{\mathcal{F}}
+\newcommand{\user}{\mathsf{User}}
+\newcommand{\sk}{\mathsf{sk}}
+\newcommand{\pw}{\mathsf{pw}}
+\newcommand{\VK}{\mathsf{VK}}
+\newcommand{\SK}{\mathsf{SK}}
+\newcommand{\crs}{\mathsf{crs}}
+\newcommand{\newsession}{\mathsf{NewSession}}
+\newcommand{\testpwd}{\mathsf{TestPwd}}
+\newcommand{\compromised}{\mathsf{compromised}}
+\newcommand{\server}{\mathsf{Server}}
+\newcommand{\msg}[1]{\mathsf{msg}_{#1}}
+\newcommand{\rgets}{\xleftarrow{\$}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\ct}{\mathsf{ct}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\sign}{\mathsf{Sign}}
+
+% --------------- OPRF
+\newcommand{\oprf}{\mathsf{OPRF}}
+\newcommand{\prf}{\mathsf{PRF}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\secpar}{\lambda}
+\newcommand{\sender}{\mathcal{S}}
+\newcommand{\receiver}{\mathcal{R}}
+\newcommand{\ot}{\mathsf{OT}}
+
+\def\mike#1{\textcolor{blue}{Mike: #1}}
+\def\naman#1{\textcolor{red}{Naman: #1}}
+\def\jake#1{\textcolor{ochre}{Jake: #1}}
+
+% --------------- BOXES
+\newtcolorbox[auto counter]{funcbox}[3]{enhanced, breakable, title={#1}, colbacktitle=white, coltitle=black, attach boxed title to top left={yshift=-2mm,xshift=2mm}, label={#2}, nameref={#3},colback=white}
+
+\begin{document}
+	\maketitle
+
+\section{Definitions}
+
+Let $\prf:\bin^\secpar\times\bin^{m(\secpar)}\rightarrow\bin^{n(\secpar)}$ be a pseudorandom function with stretch $n\in\poly(\secpar)$. We define the OPRF Functionality $\F_\oprf$ as follows.
+
+\begin{funcbox}{OPRF Functionality $\F_\oprf$}{}{}
+	\textbf{Inputs.} $\sender$ has input OPRF key $k\in\bin^\secpar$, $\receiver$ has input some $x\in\bin^{m(\secpar)}$ in the domain of the PRF.\\
+	\textbf{Outputs.} $\receiver$ gets $\prf_k(x)$.
+\end{funcbox}
+
+We further define the OT functionality as below.
+
+\begin{funcbox}{OT Functionality $\F_\ot$}{}{}
+	\textbf{Inputs.} $\sender$ has input two strings $(m_0, m_1)\in\bin^{\poly(\secpar)}$ while receiver has a bit $b$.\\
+	\textbf{Outputs.} $\receiver$ gets $m_b$.
+\end{funcbox}
+
+\section{Proof of Insecurity of `Trivial' PRF}
+We define $\prf_k(x) = H(k || x)$ where $H:\bin^{*}\rightarrow\bin^{n(\secpar)}$ is a random oracle. Clearly this is a PRF; as the output of a random oracle, it is indistinguishable from a random function. We will prove the following theorem.
+
+\begin{theorem}[Communication complexity of OPRF, Perfect Completeness and Perfect Privacy]
+	Let $\prf$ be a pseudorandom function as defined above, and $\sender$ and $\receiver$ be unbounded oracle TMs that have inputs as defined in $\F_\oprf$ respectively. Then any protocol $\Pi_\oprf$ which realizes $\F_\oprf$ with perfect correctness and perfect privacy in the $\F_\ot$-hybrid model must have total communication complexity proportional to $2^{m(\secpar)}$.
+\end{theorem}
+
+\paragraph{Brief Sketch.} Our argument proceeds as follows. 
+
+
+%	\bibliographystyle{alpha}
+%	\bibliography{references}
+	
+\end{document}
+
+
+
+
+
+
+
+
+
