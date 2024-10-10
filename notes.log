@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.10) (preloaded format=xelatex 2022.11.14)  9 OCT 2024 15:37
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.10) (preloaded format=xelatex 2022.11.14)  9 OCT 2024 16:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1026,9 +1026,12 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 137
 (C:\Users\naman\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 157.
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
+ []
+
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
+t line 159.
 [1
 
 ] (notes.aux)
@@ -1041,10 +1044,10 @@ Package rerunfilecheck Info: File `notes.out' has not changed.
 Here is how much of TeX's memory you used:
  30848 strings out of 410636
  615492 string characters out of 2815793
- 977182 words of memory out of 3000000
+ 981182 words of memory out of 3000000
  51454 multiletter control sequences out of 15000+600000
  476932 words of font info for 66 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,6n,96p,423b,1299s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 84i,6n,96p,489b,1299s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
 Output written on notes.pdf (1 page).

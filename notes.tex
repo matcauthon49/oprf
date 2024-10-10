@@ -152,13 +152,17 @@ We further define the OT functionality as below.
 \end{funcbox}
 
 \section{Proof of Insecurity of `Trivial' PRF}
-We define $\prf_k(x) = H(k || x)$ where $H:\bin^{*}\rightarrow\bin^{n(\secpar)}$ is a random oracle. Clearly this is a PRF; as the output of a random oracle, it is indistinguishable from a random function. We will prove the following theorem.
+We define $\prf_k(x) = H(k || x)$ where $H:\bin^{*}\rightarrow\bin^{n(\secpar)}$ is a random oracle. Clearly this is a PRF; as the output of a random oracle, it is indistinguishable from a random function. Let $\sender$ be an unbounded oracle TM and $\receiver$ be an oracle PPTM where both have access to the random oracle $H$. \\
+
+We will prove the following theorem.
 
 \begin{theorem}[Communication complexity of OPRF, Perfect Completeness and Perfect Privacy]
-	Let $\prf$ be a pseudorandom function as defined above, and $\sender$ and $\receiver$ be unbounded oracle TMs that have inputs as defined in $\F_\oprf$ respectively. Then any protocol $\Pi_\oprf$ which realizes $\F_\oprf$ with perfect correctness and perfect privacy in the $\F_\ot$-hybrid model must have total communication complexity proportional to $2^{m(\secpar)}$.
+	Let $\prf$ be a pseudorandom function as defined above, and $\sender$ and $\receiver$ have inputs as defined in $\F_\oprf$ respectively. Then any protocol $\Pi_\oprf$ which realizes $\F_\oprf$ with perfect correctness and perfect privacy in the $\F_\ot$-hybrid model must have total communication complexity proportional to $2^{m(\secpar)}$.
 \end{theorem}
 
-\paragraph{Brief Sketch.} Our argument proceeds as follows. 
+\paragraph{Brief Sketch.} Our argument proceeds as follows. Note that in order to evaluate the PRF at any point $x$, the oracle call $H(k||x)$ must be made. Clearly this oracle call cannot be made by the PPT receiver, since otherwise the receiver's view will consist of a polynomial-sized list of oracle queries to $H$ which contains $k||x$ -- this violates sender privacy as receiver learns $k$. Thus, this oracle call must be made by the sender.
+
+Thus, the sender must make the oracle call $H(k||x)$. Note that by perfect correctness, the receiver must obtain this value regardless of the private randomness of the sender. Furthermore, this call 
 
 
 %	\bibliographystyle{alpha}
