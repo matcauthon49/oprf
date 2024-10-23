@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.10) (preloaded format=xelatex 2022.11.14)  9 OCT 2024 16:34
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.10) (preloaded format=xelatex 2022.11.14)  22 OCT 2024 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -876,6 +876,9 @@ Library (tcolorbox): 'tcbposter.code.tex' version '5.1.1'
 z/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )
+(C:\Users\naman\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+)
 (C:\Users\naman\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2022/05/18 v4.0.3 Extensive control of page headers and foote
 rs
@@ -948,31 +951,31 @@ LaTeX Warning: Label `@cref' multiply defined.
 )
 \openout1 = `notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 135.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 136.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-35.
+36.
  (C:\Users\naman\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1008,33 +1011,33 @@ LaTeX Font Info:    ... okay on input line 135.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 135.
+Package hyperref Info: Link coloring ON on input line 136.
 (notes.out) (notes.out)
 \@outlinefile=\write4
 \openout4 = `notes.out'.
 
 \c@lstlisting=\count343
-LaTeX Font Info:    Trying to load font information for U+msa on input line 137
+LaTeX Font Info:    Trying to load font information for U+msa on input line 138
 .
 
 (C:\Users\naman\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 137
+LaTeX Font Info:    Trying to load font information for U+msb on input line 138
 .
 
 (C:\Users\naman\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 
  []
 
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 159.
+t line 160.
 [1
 
-] (notes.aux)
+] [2] (notes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1042,12 +1045,12 @@ Package rerunfilecheck Info: File `notes.out' has not changed.
 (rerunfilecheck)             Checksum: 60F94E08FC1E876EBB207BAACC6BFA2F;336.
  ) 
 Here is how much of TeX's memory you used:
- 30848 strings out of 410636
- 615492 string characters out of 2815793
- 981182 words of memory out of 3000000
- 51454 multiletter control sequences out of 15000+600000
+ 30888 strings out of 410636
+ 616439 string characters out of 2815793
+ 982985 words of memory out of 3000000
+ 51492 multiletter control sequences out of 15000+600000
  476932 words of font info for 66 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,6n,96p,489b,1299s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 84i,11n,96p,516b,1299s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
-Output written on notes.pdf (1 page).
+Output written on notes.pdf (2 pages).

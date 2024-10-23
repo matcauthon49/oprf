@@ -21,7 +21,7 @@
 \usetikzlibrary{positioning}
 
 \usepackage{thmtools}
-%\usepackage[skip=6pt]{parskip}
+\usepackage[skip=6pt]{parskip}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -124,6 +124,7 @@
 \newcommand{\sender}{\mathcal{S}}
 \newcommand{\receiver}{\mathcal{R}}
 \newcommand{\ot}{\mathsf{OT}}
+\newcommand{\Enc}{\mathsf{Enc}}
 
 \def\mike#1{\textcolor{blue}{Mike: #1}}
 \def\naman#1{\textcolor{red}{Naman: #1}}
@@ -157,12 +158,14 @@ We define $\prf_k(x) = H(k || x)$ where $H:\bin^{*}\rightarrow\bin^{n(\secpar)}$
 We will prove the following theorem.
 
 \begin{theorem}[Communication complexity of OPRF, Perfect Completeness and Perfect Privacy]
-	Let $\prf$ be a pseudorandom function as defined above, and $\sender$ and $\receiver$ have inputs as defined in $\F_\oprf$ respectively. Then any protocol $\Pi_\oprf$ which realizes $\F_\oprf$ with perfect correctness and perfect privacy in the $\F_\ot$-hybrid model must have total communication complexity proportional to $2^{m(\secpar)}$.
+	Let $\prf$ be a pseudorandom function as defined above, and $\sender$ and $\receiver$ have inputs as defined in $\F_\oprf$ respectively. Then any protocol $\Pi_\oprf$ which realizes $\F_\oprf$ with perfect correctness and perfect privacy in the $\F_\ot$-hybrid model must have total communication complexity proportional to $|X| =2^{m(\secpar)}$.
 \end{theorem}
 
 \paragraph{Brief Sketch.} Our argument proceeds as follows. Note that in order to evaluate the PRF at any point $x$, the oracle call $H(k||x)$ must be made. Clearly this oracle call cannot be made by the PPT receiver, since otherwise the receiver's view will consist of a polynomial-sized list of oracle queries to $H$ which contains $k||x$ -- this violates sender privacy as receiver learns $k$. Thus, this oracle call must be made by the sender.
 
-Thus, the sender must make the oracle call $H(k||x)$. Note that by perfect correctness, the receiver must obtain this value regardless of the private randomness of the sender. Furthermore, this call 
+Thus, the sender must make the oracle call $H(k||x)$. Furthermore, suppose there is some $x$ for which the sender does not query $H(k||x)$. By the above argument it is clear that this call is not made by either party. However, if the receiver's input is $x$, then the receiver can only output the correct value of $H(k||x)$ with negligible probability, which contradicts perfect correctness of the protocol. It follows that $\sender$ must make the oracle call $H(k||x)$ for each $x$.
+
+Let $\mathsf{Enc}$ be an encoding algorithm such that $\Enc:x\times H(k||x)\mapsto F(x)$ and $\mathsf{Dec}$ be a decoding algorithm such that $\mathsf{Dec}:F(x)\times H(k||x)\mapsto X$. Let $\Enc(X)$ be $\sender$'s input to $\F_\ot$. We require that $\Pr[\mathsf{Dec}(x, \Enc(x, H(k||x))) = H(k||x)]=1$. It immediately follows that $|\Enc(X)| = |X| = O(2^m)$. The result follows from the trivial information-theoretic lower bound for $\ot$.
 
 
 %	\bibliographystyle{alpha}
